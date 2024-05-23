@@ -1,10 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 const initialState = {}
-export const STATUS = {
+export const STATUS = Object.freeze({
     IDLE:'idle',
     LOADING:'loading',
     ERROR:'error'
-}
+})
 const productSlice = createSlice({
     name: 'product',
     initialState: {
