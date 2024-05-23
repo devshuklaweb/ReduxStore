@@ -24,6 +24,10 @@ const Shop = () => {
                             <div className='container text-center'>
                                 <img src={loading} alt='Loading...' /> 
                             </div>
+                        : (status === STATUS.ERROR) ? 
+                            <div className='text-center'>
+                                <h4>Error found! Something went wrong. Please check console.</h4>
+                            </div>
                         :
                         product.map((item, key) => {
                             return <div key={item.id} className="card col-md-3 mx-1 my-1" style={{ width: '18rem', float: 'left' }}>
