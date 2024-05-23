@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 const initialState = {}
-const STATUS = {
+export const STATUS = {
     IDLE:'idle',
     LOADING:'loading',
     ERROR:'error'
@@ -20,6 +20,8 @@ const productSlice = createSlice({
         }
     },
 })
+
+
 export const { setProduct,setStatus } = productSlice.actions
 export default productSlice.reducer
 

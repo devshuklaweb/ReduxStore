@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { add } from '../state/cartSlice'
-import { fetchProducts } from '../state/productSlice'
+import { fetchProducts, STATUS } from '../state/productSlice'
 import { useDispatch, useSelector } from 'react-redux'
+import loading from '../loading.gif'
 const Shop = () => {
     const dispatch = useDispatch() //reducer ke method ko call krne ke liye
-    const { data: product } = useSelector((state) => state.product); //data:product means data alias to product
+    const { data: product,status } = useSelector((state) => state.product); //data:product means data alias to product
     useEffect(() => {
         dispatch(fetchProducts());
     }, [])
@@ -18,8 +19,12 @@ const Shop = () => {
             <div className="container" style={{ marginTop: '100px' }}>
                 <h2>Our Redux Store Products </h2>
                 <div className='row'>
-
                     {
+                        (status === STATUS.LOADING) ? 
+                            <div className='container text-center'>
+                                <img src={loading} alt='Loading...' /> 
+                            </div>
+                        :
                         product.map((item, key) => {
                             return <div key={item.id} className="card col-md-3 mx-1 my-1" style={{ width: '18rem', float: 'left' }}>
                                 <div style={{ height: '200px', width: '200' }}>
