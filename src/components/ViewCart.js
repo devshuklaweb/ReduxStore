@@ -27,21 +27,27 @@ const ViewCart = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {
-                                products.map((item,key) => {
-                                    return <tr key={item.id}>
-                                        <th scope="row">{item.id}</th>
-                                        <td><img src={item.image} className="img-thumbnail" alt={item.title} style={{height:'100px',width:'100px'}}/></td>
-                                        <td>{item.title}</td>
-                                        <td>{item.price}</td>
-                                        <td>1</td>
-                                        <td>
-                                            <button className="btn btn-primary" onClick={() => removeToCart(item.id)}>Remove Item</button>
+                            {   
+                                (products.length === 0) ? 
+                                    <tr>
+                                        <td className='text-center' colSpan={6}>
+                                            <strong>Cart empty!!!</strong>
                                         </td>
                                     </tr>
-                                })
+                                : 
+                                    products.map((item,key) => {
+                                        return <tr key={item.id}>
+                                            <th scope="row">{item.id}</th>
+                                            <td><img src={item.image} className="img-thumbnail" alt={item.title} style={{height:'100px',width:'100px'}}/></td>
+                                            <td>{item.title}</td>
+                                            <td>{item.price}</td>
+                                            <td>1</td>
+                                            <td>
+                                                <button className="btn btn-primary" onClick={() => removeToCart(item.id)}>Remove Item</button>
+                                            </td>
+                                        </tr>
+                                    })
                             }
-                            
                         </tbody>
                     </table>
                 </div>
